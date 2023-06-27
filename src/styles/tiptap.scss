@@ -68,4 +68,20 @@
   & > p {
     @apply mb-3;
   }
+
+  blockquote{
+    line-height: 26px;
+    padding-left: 12px;
+    position: relative;
+    &::after{
+      content: '';
+      width: 4px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: rgba(194, 193, 197, 1);
+      border-radius: 4px;
+    }
+  }
 }

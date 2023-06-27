@@ -33,5 +33,9 @@ module.exports = {
       backgroundImage: {},
     },
   },
-  plugins: [],
+  plugins: [
+    // Tailwind plugins
+    require("@tailwindcss/typography"),
+    require("tailwindcss-animate"),
+  ],
 };

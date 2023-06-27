@@ -39,7 +39,7 @@ export const TiptapExtensions = [
     /* 引用 https://tiptap.dev/api/nodes/blockquote */
     blockquote: {
       HTMLAttributes: {
-        class: cls`border-l-4 border-stone-700`,
+        class: cls``,
       },
     },
     /* 代码块 https://tiptap.dev/api/nodes/code-block */
