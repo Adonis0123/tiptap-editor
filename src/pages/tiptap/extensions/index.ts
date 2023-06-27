@@ -10,6 +10,7 @@ import TextStyle from '@tiptap/extension-text-style';
 import { Color } from '@tiptap/extension-color';
 import TaskItem from '@tiptap/extension-task-item';
 import TaskList from '@tiptap/extension-task-list';
+import SlashCommand from './SlashCommand';
 
 export const TiptapExtensions = [
   /**
@@ -123,6 +124,7 @@ export const TiptapExtensions = [
   }),
   TextStyle,
   Color,
+  SlashCommand,
   // TaskList.configure({
   //   HTMLAttributes: {
   //     class: cls`not-prose pl-2`,
