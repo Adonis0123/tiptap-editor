@@ -5,6 +5,9 @@
     ["classNames\\(([^)]*)\\)"]
   ],
   "cSpell.words": [
+    "dropcursor",
+    "gapcursor",
+    "lucide",
     "Tiptap"
   ]
 }

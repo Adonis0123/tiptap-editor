@@ -1,3 +1,71 @@
 .ProseMirror {
-  
+  & .is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: #94a2ae;
+    pointer-events: none;
+    height: 0;
+  }
+  & .is-empty::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: #94a2ae;
+    pointer-events: none;
+    height: 0;
+  }
+
+  h1 {
+    color: #375375;
+    @apply text-4xl font-bold mb-8;
+  }
+
+  h2 {
+    color: #375375;
+    @apply text-2xl font-bold mb-5;
+  }
+
+  h3 {
+    color: #375375;
+    @apply text-lg font-bold mb-3;
+  }
+
+  ul,
+  ol {
+    @apply mb-5;
+  }
+
+  ul > li {
+    @apply relative pl-5;
+    &::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 100%;
+      background: currentColor;
+      // 多行定位时需要定位在第一行垂直居中位置
+      position: absolute;
+      left: 0;
+      top: calc(0.5em + 1px);
+      background-size: cover;
+    }
+  }
+
+  ol {
+    counter-reset: li;
+    & > li {
+      @apply relative pl-5;
+
+      &::before {
+        content: counter(li) '.';
+        counter-increment: li;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+
+  & > p {
+    @apply mb-3;
+  }
 }
