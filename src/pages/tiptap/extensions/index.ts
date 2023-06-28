@@ -12,7 +12,7 @@ import TaskItem from '@tiptap/extension-task-item';
 import TaskList from '@tiptap/extension-task-list';
 import SlashCommand from './SlashCommand';
 import DragHandle from './DragHandle';
-
+import TextAlign from '@tiptap/extension-text-align'
 export const TiptapExtensions = [
   /**
    * 基础套件
@@ -126,6 +126,10 @@ export const TiptapExtensions = [
   TextStyle,
   Color,
   SlashCommand,
+  /* https://tiptap.dev/api/extensions/text-align  */
+  TextAlign.configure({
+    types: ['heading', 'paragraph'],
+  }),
   // DragHandle,
   // TaskList.configure({
   //   HTMLAttributes: {
