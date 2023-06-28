@@ -32,6 +32,9 @@
   ul,
   ol {
     @apply mb-5;
+    & > li {
+      @apply mb-2 last:mb-0;
+    }
   }
 
   ul > li {
@@ -69,11 +72,11 @@
     @apply mb-3;
   }
 
-  blockquote{
+  blockquote {
     line-height: 26px;
     padding-left: 12px;
     position: relative;
-    &::after{
+    &::after {
       content: '';
       width: 4px;
       height: 100%;
@@ -113,4 +116,3 @@ div[data-drag-handle] {
     opacity: 0;
   }
 }
-

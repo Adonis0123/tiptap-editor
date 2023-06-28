@@ -41,7 +41,7 @@ const Command = Extension.create({
   addOptions() {
     return {
       suggestion: {
-        char: "/",
+        char: "/", // 启用的字符
         command: ({
           editor,
           range,
@@ -68,8 +68,6 @@ const Command = Extension.create({
 
 const getSuggestionItems = ({ query }: { query: string }) => {
   return [
-    
-   
     {
       title: "Text",
       description: "Just start typing with plain text.",
