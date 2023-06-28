@@ -11,6 +11,7 @@ import { Color } from '@tiptap/extension-color';
 import TaskItem from '@tiptap/extension-task-item';
 import TaskList from '@tiptap/extension-task-list';
 import SlashCommand from './SlashCommand';
+import DragHandle from './DragHandle';
 
 export const TiptapExtensions = [
   /**
@@ -125,6 +126,7 @@ export const TiptapExtensions = [
   TextStyle,
   Color,
   SlashCommand,
+  // DragHandle,
   // TaskList.configure({
   //   HTMLAttributes: {
   //     class: cls`not-prose pl-2`,

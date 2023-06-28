@@ -131,7 +131,7 @@ export const NodeSelector: FC<NodeSelectorProps> = ({
               flex items-center justify-between 
               rounded-sm 
               px-2 py-1 
-              text-sm text-stone-600 
+              text-sm text-[#375375]
               hover:bg-stone-100
                 ${{
                   "text-[#3A7EFF]": item.isActive(),

@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useRef, useState } from 'react';
 import cls from '../utils/cls';
 import { useMount } from 'ahooks';
 import { EditorContent, useEditor } from '@tiptap/react';
 import { TiptapExtensions } from './extensions';
 import { TiptapEditorProps } from './editorProps';
 import { presetMarkdown } from './default-content';
-import { markdown2Html } from './uitils';
+import { markdown2Html } from './utils';
 import { EditorBubbleMenu } from './components/EditorBubbleMenu';
+import EditorTitle from './components/EditorTitle';
 export interface ITiptapProps {}
 
 const Tiptap: React.FC<ITiptapProps> = (props) => {
@@ -49,6 +50,7 @@ const Tiptap: React.FC<ITiptapProps> = (props) => {
     editor.commands.setContent(html);
   }, [editor, content]);
 
+  /* 插入内容 */
   const onInsertContent = () => {
     if (!editor) {
       return;
@@ -79,6 +81,7 @@ const Tiptap: React.FC<ITiptapProps> = (props) => {
       >
         {editor ? (
           <>
+            <EditorTitle editor={editor}/>
             <EditorBubbleMenu editor={editor} />
             <EditorContent editor={editor} />
           </>
