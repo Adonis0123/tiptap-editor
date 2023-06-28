@@ -1,0 +1,33 @@
+// 解决 antd Button primary 样式冲突问题
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  &.coco-btn-primary {
+    @apply bg-primary;
+    &:disabled {
+      background: rgba(0, 0, 0, 0.04);
+    }
+  }
+}
+
+.coco-tabs {
+  @apply text-display-secondary;
+  & &-nav {
+    @apply mb-5;
+  }
+  & &-tab {
+    @apply pb-1;
+  }
+  & &-tab#{&}-tab-active &-tab-btn {
+    @apply text-primary;
+  }
+  & &-ink-bar {
+    @apply bg-primary;
+  }
+}
+
+:where(.css-dev-only-do-not-override-htwhyh).ant-drawer-right
+  > .ant-drawer-content-wrapper {
+  box-shadow: 0px 20px 38px rgba(11, 45, 96, 0.06);
+}

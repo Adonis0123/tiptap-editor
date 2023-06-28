@@ -1,0 +1,66 @@
+// Ref: https://github.com/vercel/next.js/discussions/27953
+// Next.js 暂不支持条件引入全局样式，通过此法绕过
+
+// 主题定制一式两份 theme.module.scss/theme.ts，方便不能直接读取 css 变量的功能使用，
+// 比如 antd 主题定制
+
+// 站内主题色
+$primary-color: #3a7eff;
+// 站内主题色对应的 hover 颜色
+$primary-color-hover: #2361f9;
+
+// 站内次要主题色
+$secondary-color: #00c2a7;
+// 站内次要主题色对应的 hover 颜色
+$secondary-color-hover: #00d3b6;
+
+// 站内排版（typography）主要展示颜色
+// 由于 typography 较为复杂，故使用 display 代替
+$display-color: #375375;
+// 站内排版（typography）次要展示颜色
+$display-color-secondary: #677788;
+// 站内排版（tertiary）第三次要展示颜色
+$display-color-tertiary: #94a2ae;
+// 站内排版（typography）反转展示颜色
+$display-color-inverse: #f4f4fc;
+// 站内 border color
+$display-color-border: #dee8f9;
+$display-color-border-2: #dee8f9;
+
+@function toRGB($color) {
+  // Ref: https://sass-lang.com/documentation/interpolation
+  @return #{red($color) + ' ' + green($color) + ' ' + blue($color)};
+}
+
+.theme {
+  --one-ui-primary: #{toRGB($primary-color)};
+  --one-ui-primary-hover: #{toRGB($primary-color-hover)};
+  --one-ui-secondary: #{toRGB($secondary-color)};
+  --one-ui-secondary-hover: #{toRGB($secondary-color-hover)};
+
+  // Ref: https://github.com/sass/node-sass/issues/2889
+  // Ref: https://sass-lang.com/documentation/interpolation
+  --ux-primary: #{toRGB($primary-color)};
+  --ux-primary-hover: #{toRGB($primary-color-hover)};
+  --ux-secondary: #{toRGB($secondary-color)};
+  --ux-secondary-hover: #{toRGB($secondary-color-hover)};
+  --ux-display: #{toRGB($display-color)};
+  --ux-display-secondary: #{toRGB($display-color-secondary)};
+  --ux-display-tertiary: #{toRGB($display-color-tertiary)};
+  --ux-display-inverse: #{toRGB($display-color-inverse)};
+  --ux-color-border: #{toRGB($display-color-border)};
+  --ux-color-border-2: #{toRGB($display-color-border-2)};
+}
+
+:export {
+  primaryColor: $primary-color;
+  primaryColorHover: $primary-color-hover;
+  secondaryColor: $secondary-color;
+  secondaryColorHover: $secondary-color-hover;
+  displayColor: $display-color;
+  displayColorSecondary: $display-color-secondary;
+  displayColorTertiary: $display-color-tertiary;
+  displayColorInverse: $display-color-inverse;
+  displayColorBorder: $display-color-border;
+  displayColorBorder2: $display-color-border-2;
+}

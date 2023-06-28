@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-
+import { Input } from 'antd';
+const { TextArea } = Input;
 
 import cls from '@/pages/utils/cls';
 import { Editor } from '@tiptap/react';
@@ -18,18 +19,31 @@ const EditorTitle: React.FC<IEditorTitleProps> = (props) => {
     setTitle(e.target.value);
   };
 
+  const onPressEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    e.preventDefault();
+    if (!editor) {
+      return;
+    }
+    // 第一个模块聚焦
+    editor.commands.focus('start');
+  };
+
   return (
     <div className={cls`${className}`}>
-      <textarea
+      <TextArea
+        onPressEnter={onPressEnter}
         ref={textAreaRef}
-        maxLength={200}
+        maxLength={60}
+        bordered={false}
         placeholder="Title"
+        autoSize
         value={title}
         onChange={onChange}
         className={cls`
-            focus:outline-none
-            w-full h-[44px]
+            w-full 
             text-4xl font-bold
+            mb-8
+            p-0
             placeholder:font-normal
             text-[#375375]
             placeholder:text-[#94a2ae]
