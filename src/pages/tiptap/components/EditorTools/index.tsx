@@ -39,6 +39,7 @@ const EditorTools: React.FC<IEditorToolsProps> = (props) => {
       <HeadingOptions editor={editor} />
       <Interval />
       <TextOptions editor={editor} />
+      <Interval />
     </div>
   );
 };
