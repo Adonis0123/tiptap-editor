@@ -8,6 +8,7 @@ import { presetMarkdown } from './default-content';
 import { markdown2Html } from './utils';
 import { EditorBubbleMenu } from './components/EditorBubbleMenu';
 import EditorTitle from './components/EditorTitle';
+import EditorTools from './components/EditorTools';
 export interface ITiptapProps {}
 
 const Tiptap: React.FC<ITiptapProps> = (props) => {
@@ -66,6 +67,7 @@ const Tiptap: React.FC<ITiptapProps> = (props) => {
 
   return (
     <>
+      {editor ? <EditorTools editor={editor} /> : null}
       <div
         style={{
           boxShadow: '0px 4px 9px rgba(11, 45, 96, 0.16)',
@@ -81,7 +83,7 @@ const Tiptap: React.FC<ITiptapProps> = (props) => {
       >
         {editor ? (
           <>
-            <EditorTitle editor={editor}/>
+            <EditorTitle editor={editor} />
             <EditorBubbleMenu editor={editor} />
             <EditorContent editor={editor} />
           </>
