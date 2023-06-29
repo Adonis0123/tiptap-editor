@@ -2,19 +2,21 @@ import Modal from '@/pages/components/antd/Modal';
 import cls from '@/pages/utils/cls';
 import { Editor } from '@tiptap/react';
 import { Input } from 'antd';
-import { Link2Icon } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import { ImageIcon } from 'lucide-react';
+import React, { useState } from 'react';
 
-export interface IAddLinkProps {
+export interface IAddImageProps {
   className?: string;
   editor: Editor;
 }
 
-const AddLink: React.FC<IAddLinkProps> = (props) => {
+const AddImage: React.FC<IAddImageProps> = (props) => {
   const { className, editor } = props;
 
   const [open, setOpen] = useState<boolean>(false);
-  const [link, setLink] = useState<string>('');
+  const [link, setLink] = useState<string>(
+    'https://hix.ai/cdn/public/images/for-freelancers.jpg'
+  );
   const [errMsg, setErrMsg] = useState<string>('');
 
   const onChangeLink = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,10 +25,6 @@ const AddLink: React.FC<IAddLinkProps> = (props) => {
 
   const onOpenLinkModal = () => {
     setOpen(true);
-    const href = editor.getAttributes('link').href;
-    if (href) {
-      setLink(href);
-    }
   };
 
   const onCloseModal = () => {
@@ -35,12 +33,7 @@ const AddLink: React.FC<IAddLinkProps> = (props) => {
     setOpen(false);
   };
 
-
   const onValidateLink = () => {
-    if (!link) {
-      setErrMsg('');
-      return true;
-    }
     const isOk = /^https?:\/\//.test(link);
     if (!isOk) {
       setErrMsg('link is not valid.');
@@ -55,46 +48,27 @@ const AddLink: React.FC<IAddLinkProps> = (props) => {
     if (!isOk) {
       return;
     }
-    if (link === null) {
-      return;
-    }
 
-    // empty
-    if (link === '') {
-      editor.chain().extendMarkRange('link').unsetLink().run();
-      onCloseModal();
-      return;
-    }
-    // update link
-    editor.chain().extendMarkRange('link').setLink({ href: link }).run();
+    // set img link
+    editor.chain().focus().setImage({ src: link }).run();
     onCloseModal();
   };
 
   return (
-    <>
-      <button
-        onClick={onOpenLinkModal}
-        disabled={
-          !editor
-            .can()
-            .chain()
-            .focus()
-            .extendMarkRange('link')
-            .setLink({ href: '' })
-            .run()
-        }
+    <button
+      onClick={onOpenLinkModal}
+      disabled={!editor.can().chain().focus().setImage({ src: '' }).run()}
+      className={cls`
+      cursor-pointer
+      px-1 h-full w-8 flex items-center justify-center
+`}
+    >
+      <ImageIcon
         className={cls`
-        cursor-pointer
-        px-1 h-full w-8 flex items-center justify-center
-      `}
-      >
-        <Link2Icon
-          className={cls`
-          h-5 w-5 
-          ${editor.isActive('link') ? 'text-primary' : 'text-display'}
-      `}
-        />
-      </button>
+        h-5 w-5 
+        ${editor.isActive('link') ? 'text-primary' : 'text-display'}
+        `}
+      />
       <Modal
         onCancel={() => {
           onCloseModal();
@@ -117,8 +91,8 @@ const AddLink: React.FC<IAddLinkProps> = (props) => {
           <span className="text-sm text-[#F77062]">{errMsg}</span>
         </div>
       </Modal>
-    </>
+    </button>
   );
 };
 
-export default AddLink;
+export default AddImage;
