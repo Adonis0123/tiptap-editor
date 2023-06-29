@@ -9,6 +9,7 @@ import {
   RemoveFormatting,
   UnderlineIcon,
 } from 'lucide-react';
+import styles from '../index.module.scss';
 
 export interface ITextOptionsProps {
   className?: string;
@@ -58,8 +59,7 @@ const TextOptions: React.FC<ITextOptionsProps> = (props) => {
   return (
     <div
       className={cls`
-      flex items-center space-x-1
-      h-8
+      ${styles['list-warp']}
       ${className}
     `}
     >

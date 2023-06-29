@@ -5,6 +5,7 @@ import HeadingOptions from './HeadingOptions';
 import { BoldIcon } from 'lucide-react';
 import TextOptions from './TextOptions';
 import ListOptions from './ListOptions';
+import OperateOptions from './OperateOptions';
 
 export interface IEditorToolsProps {
   className?: string;
@@ -41,7 +42,9 @@ const EditorTools: React.FC<IEditorToolsProps> = (props) => {
       <Interval />
       <TextOptions editor={editor} />
       <Interval />
-      <ListOptions editor={editor}/>
+      <ListOptions editor={editor} />
+      <Interval />
+      <OperateOptions editor={editor} />
     </div>
   );
 };

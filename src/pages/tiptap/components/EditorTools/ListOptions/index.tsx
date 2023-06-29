@@ -8,7 +8,11 @@ import {
   AlignCenterIcon,
   AlignRightIcon,
   AlignJustifyIcon,
+  ListOrdered,
+  List,
 } from 'lucide-react';
+import styles from '../index.module.scss';
+
 export interface IListOptionsProps {
   className?: string;
   editor: Editor;
@@ -18,7 +22,7 @@ const ListOptions: React.FC<IListOptionsProps> = (props) => {
   const { className, editor } = props;
 
   const renderIcon = (Icon: typeof AlignLeftIcon) => {
-    return <Icon className="w-5 h-5 cursor-pointer" />;
+    return <Icon className="w-5 h-5 cursor-pointer text-display" />;
   };
 
   const textAlignItems = [
@@ -51,17 +55,26 @@ const ListOptions: React.FC<IListOptionsProps> = (props) => {
   const activeTextAlign =
     textAlignItems.filter((item) => item.isActive()).pop() ?? textAlignItems[0];
 
-  // const items: ToolIconItem[] = [
-  //   {
-  //     name:"text-align",
-
-  //   }
-  // ]
+  const items: ToolIconItem[] = [
+    {
+      name: 'Bullet List',
+      icon: List,
+      command: () => editor.chain().focus().toggleBulletList().run(),
+      isActive: () => editor.isActive('bulletList'),
+      isDisabled: () => false,
+    },
+    {
+      name: 'Numbered List',
+      icon: ListOrdered,
+      command: () => editor.chain().focus().toggleOrderedList().run(),
+      isActive: () => editor.isActive('orderedList'),
+      isDisabled: () => false,
+    },
+  ];
   return (
     <div
       className={cls`
-      flex items-center space-x-1
-      h-8
+      ${styles['list-warp']}
       ${className}
 `}
     >
@@ -86,6 +99,29 @@ const ListOptions: React.FC<IListOptionsProps> = (props) => {
       >
         {activeTextAlign.label}
       </Dropdown>
+      {items.map((item) => {
+        return (
+          <button
+            disabled={item.isDisabled()}
+            className={cls`
+            cursor-pointer
+            px-1 h-full w-8 flex items-center justify-center
+
+          `}
+            key={item.name}
+            onClick={() => {
+              item.command();
+            }}
+          >
+            <item.icon
+              className={cls`
+              h-5 w-5 
+              ${item.isActive() ? 'text-primary' : 'text-display'}
+            `}
+            />
+          </button>
+        );
+      })}
     </div>
   );
 };
