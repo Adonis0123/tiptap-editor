@@ -50,8 +50,9 @@ export function markdown2Html(markdown: string): string {
   marked.use({
     extensions: [underline, inlineCode],
     headerIds: false,
-    mangle: false,
+    gfm: true,
+    mangle: true,
   });
 
-  return marked(markdown);
+  return marked.parse(markdown);
 }
