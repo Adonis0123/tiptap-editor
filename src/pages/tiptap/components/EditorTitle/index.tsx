@@ -13,7 +13,7 @@ export interface IEditorTitleProps {
 const EditorTitle: React.FC<IEditorTitleProps> = (props) => {
   const { className, editor } = props;
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
-  const [title, setTitle] = useState<string>('');
+  const [title, setTitle] = useState<string>('this is title');
 
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTitle(e.target.value);
@@ -37,6 +37,7 @@ const EditorTitle: React.FC<IEditorTitleProps> = (props) => {
         bordered={false}
         placeholder="Title"
         autoSize
+
         value={title}
         onChange={onChange}
         className={cls`
