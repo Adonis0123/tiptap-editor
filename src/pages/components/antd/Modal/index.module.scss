@@ -1,0 +1,9 @@
+.modal {
+  :global {
+    .coco-modal {
+      & .coco-modal-content {
+        @apply md:px-4;
+      }
+    }
+  }
+}
