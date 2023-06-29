@@ -12,7 +12,9 @@ import TaskItem from '@tiptap/extension-task-item';
 import TaskList from '@tiptap/extension-task-list';
 import SlashCommand from './SlashCommand';
 import DragHandle from './DragHandle';
-import TextAlign from '@tiptap/extension-text-align'
+import TextAlign from '@tiptap/extension-text-align';
+import { Markdown } from 'tiptap-markdown';
+
 export const TiptapExtensions = [
   /**
    * 基础套件
@@ -141,4 +143,9 @@ export const TiptapExtensions = [
   //     class: cls`flex items-start mb-4`,
   //   },
   // }),
+  /* markdown适配插件 https://github.com/aguingand/tiptap-markdown */
+  Markdown.configure({
+    breaks: true,
+    transformPastedText: true,
+  }),
 ];
