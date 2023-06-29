@@ -51,7 +51,7 @@ export function markdown2Html(markdown: string): string {
     extensions: [underline, inlineCode],
     headerIds: false,
     gfm: true,
-    mangle: true,
+    mangle: false,
   });
 
   return marked.parse(markdown);

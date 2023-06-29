@@ -14,6 +14,9 @@ import SlashCommand from './SlashCommand';
 import DragHandle from './DragHandle';
 import TextAlign from '@tiptap/extension-text-align';
 import { Markdown } from 'tiptap-markdown';
+import { Paragraph } from './Paragraph';
+import { Document } from './Document';
+import { DBlock } from './DBlock';
 
 export const TiptapExtensions = [
   /**
@@ -132,6 +135,7 @@ export const TiptapExtensions = [
   TextAlign.configure({
     types: ['heading', 'paragraph'],
   }),
+  /* 测试drag */
   // DragHandle,
   // TaskList.configure({
   //   HTMLAttributes: {
@@ -148,4 +152,9 @@ export const TiptapExtensions = [
     breaks: true,
     transformPastedText: true,
   }),
+
+  /* 以下是测试自定义block */
+  // Document,
+  // DBlock,
+  // Paragraph,
 ];
