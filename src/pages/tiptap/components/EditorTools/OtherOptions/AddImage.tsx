@@ -50,25 +50,28 @@ const AddImage: React.FC<IAddImageProps> = (props) => {
     }
 
     // set img link
+    console.log('link', link);
     editor.chain().focus().setImage({ src: link }).run();
     onCloseModal();
   };
 
   return (
-    <button
-      onClick={onOpenLinkModal}
-      disabled={!editor.can().chain().focus().setImage({ src: '' }).run()}
-      className={cls`
+    <>
+      <button
+        onClick={onOpenLinkModal}
+        disabled={!editor.can().chain().focus().setImage({ src: '' }).run()}
+        className={cls`
       cursor-pointer
       px-1 h-full w-8 flex items-center justify-center
 `}
-    >
-      <ImageIcon
-        className={cls`
+      >
+        <ImageIcon
+          className={cls`
         h-5 w-5 
         ${editor.isActive('link') ? 'text-primary' : 'text-display'}
         `}
-      />
+        />
+      </button>
       <Modal
         onCancel={() => {
           onCloseModal();
@@ -91,7 +94,7 @@ const AddImage: React.FC<IAddImageProps> = (props) => {
           <span className="text-sm text-[#F77062]">{errMsg}</span>
         </div>
       </Modal>
-    </button>
+    </>
   );
 };
 
