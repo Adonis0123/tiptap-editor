@@ -14,7 +14,7 @@ import {
 
 import { Dispatch, FC, SetStateAction } from "react";
 import { BubbleMenuItem } from "../EditorBubbleMenu";
-import cls from "@/pages/utils/cls";
+import cls from "@/utils/cls";
 
 interface NodeSelectorProps {
   editor: Editor;

@@ -4,7 +4,7 @@ import { Modal } from 'antd';
 import styles from './index.module.scss';
 
 import type { ModalProps } from 'antd';
-import cls from '@/pages/utils/cls';
+import cls from '@/utils/cls';
 
 export type { ModalProps };
 

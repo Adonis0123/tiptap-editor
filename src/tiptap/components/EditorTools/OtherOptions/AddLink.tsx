@@ -1,22 +1,20 @@
-import Modal from '@/pages/components/antd/Modal';
-import cls from '@/pages/utils/cls';
+import Modal from '@/components/antd/Modal';
+import cls from '@/utils/cls';
 import { Editor } from '@tiptap/react';
 import { Input } from 'antd';
-import { ImageIcon } from 'lucide-react';
-import React, { useState } from 'react';
+import { Link2Icon } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 
-export interface IAddImageProps {
+export interface IAddLinkProps {
   className?: string;
   editor: Editor;
 }
 
-const AddImage: React.FC<IAddImageProps> = (props) => {
+const AddLink: React.FC<IAddLinkProps> = (props) => {
   const { className, editor } = props;
 
   const [open, setOpen] = useState<boolean>(false);
-  const [link, setLink] = useState<string>(
-    'https://hix.ai/cdn/public/images/for-freelancers.jpg'
-  );
+  const [link, setLink] = useState<string>('');
   const [errMsg, setErrMsg] = useState<string>('');
 
   const onChangeLink = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +23,10 @@ const AddImage: React.FC<IAddImageProps> = (props) => {
 
   const onOpenLinkModal = () => {
     setOpen(true);
+    const href = editor.getAttributes('link').href;
+    if (href) {
+      setLink(href);
+    }
   };
 
   const onCloseModal = () => {
@@ -33,7 +35,12 @@ const AddImage: React.FC<IAddImageProps> = (props) => {
     setOpen(false);
   };
 
+
   const onValidateLink = () => {
+    if (!link) {
+      setErrMsg('');
+      return true;
+    }
     const isOk = /^https?:\/\//.test(link);
     if (!isOk) {
       setErrMsg('link is not valid.');
@@ -48,10 +55,18 @@ const AddImage: React.FC<IAddImageProps> = (props) => {
     if (!isOk) {
       return;
     }
+    if (link === null) {
+      return;
+    }
 
-    // set img link
-    console.log('link', link);
-    editor.chain().focus().setImage({ src: link }).run();
+    // empty
+    if (link === '') {
+      editor.chain().extendMarkRange('link').unsetLink().run();
+      onCloseModal();
+      return;
+    }
+    // update link
+    editor.chain().extendMarkRange('link').setLink({ href: link }).run();
     onCloseModal();
   };
 
@@ -59,17 +74,25 @@ const AddImage: React.FC<IAddImageProps> = (props) => {
     <>
       <button
         onClick={onOpenLinkModal}
-        disabled={!editor.can().chain().focus().setImage({ src: '' }).run()}
+        disabled={
+          !editor
+            .can()
+            .chain()
+            .focus()
+            .extendMarkRange('link')
+            .setLink({ href: '' })
+            .run()
+        }
         className={cls`
-      cursor-pointer
-      px-1 h-full w-8 flex items-center justify-center
-`}
+        cursor-pointer
+        px-1 h-full w-8 flex items-center justify-center
+      `}
       >
-        <ImageIcon
+        <Link2Icon
           className={cls`
-        h-5 w-5 
-        ${editor.isActive('link') ? 'text-primary' : 'text-display'}
-        `}
+          h-5 w-5 
+          ${editor.isActive('link') ? 'text-primary' : 'text-display'}
+      `}
         />
       </button>
       <Modal
@@ -98,4 +121,4 @@ const AddImage: React.FC<IAddImageProps> = (props) => {
   );
 };
 
-export default AddImage;
+export default AddLink;

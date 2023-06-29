@@ -8,7 +8,7 @@ import themeStyles from '@/styles/theme.module.scss';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo } from 'react';
 import { useMount } from 'ahooks';
-const WithAntd = dynamic(() => import('./_layout/WithAntd'));
+const WithAntd = dynamic(() => import('../_layout/WithAntd'));
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();

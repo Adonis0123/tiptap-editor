@@ -7,7 +7,7 @@ import {
   StrikethroughIcon,
   CodeIcon,
 } from 'lucide-react';
-import cls from '@/pages/utils/cls';
+import cls from '@/utils/cls';
 import { NodeSelector } from '../NodeSelector';
 
 /* https://tiptap.dev/api/extensions/bubble-menu */

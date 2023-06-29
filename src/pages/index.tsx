@@ -1,4 +1,4 @@
-import Tiptap from './tiptap';
+import Tiptap from '../tiptap';
 
 export default function Home() {
   return (

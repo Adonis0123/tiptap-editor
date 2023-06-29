@@ -1,6 +1,6 @@
-import { AntdContextProvider } from '@/pages/contexts/AntdContext';
+import { AntdContextProvider } from '@/contexts/AntdContext';
 import { ConfigProvider, message, notification } from 'antd';
-import { displayColor } from '../../../styles/theme.module.scss';
+import { displayColor } from '@/styles/theme.module.scss';
 export interface IWithAntdProps {
   children: React.ReactNode;
 }

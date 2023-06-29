@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Input } from 'antd';
 const { TextArea } = Input;
 
-import cls from '@/pages/utils/cls';
+import cls from '@/utils/cls';
 import { Editor } from '@tiptap/react';
 
 export interface IEditorTitleProps {

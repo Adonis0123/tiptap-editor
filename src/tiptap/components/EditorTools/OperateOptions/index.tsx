@@ -1,4 +1,4 @@
-import cls from '@/pages/utils/cls';
+import cls from '@/utils/cls';
 import React from 'react';
 import styles from '../index.module.scss';
 import { Editor } from '@tiptap/react';

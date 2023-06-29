@@ -1,4 +1,4 @@
-import cls from '@/pages/utils/cls';
+import cls from '@/utils/cls';
 import { Editor } from '@tiptap/react';
 import React from 'react';
 import HeadingOptions from './HeadingOptions';

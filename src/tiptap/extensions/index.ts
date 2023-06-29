@@ -1,4 +1,4 @@
-import cls from '@/pages/utils/cls';
+import cls from '@/utils/cls';
 import StarterKit from '@tiptap/starter-kit';
 import HorizontalRule from '@tiptap/extension-horizontal-rule';
 import { InputRule } from '@tiptap/core';

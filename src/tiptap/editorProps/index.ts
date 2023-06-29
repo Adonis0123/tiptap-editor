@@ -1,4 +1,4 @@
-import cls from '@/pages/utils/cls';
+import cls from '@/utils/cls';
 import { EditorProps } from '@tiptap/pm/view';
 
 export const TiptapEditorProps: EditorProps = {
