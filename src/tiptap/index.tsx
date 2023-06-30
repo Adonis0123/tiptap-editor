@@ -4,7 +4,7 @@ import { useMount } from 'ahooks';
 import { EditorContent, useEditor } from '@tiptap/react';
 import { TiptapExtensions } from './extensions';
 import { TiptapEditorProps } from './editorProps';
-import { presetMarkdown } from './default-content';
+import { presetMarkdown } from './defaultContent';
 import { markdown2Html } from './utils';
 import { EditorBubbleMenu } from './components/EditorBubbleMenu';
 import EditorTitle from './components/EditorTitle';
