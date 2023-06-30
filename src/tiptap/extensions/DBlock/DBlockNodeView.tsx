@@ -11,8 +11,8 @@ const DragIcon = ({ className }: { className?: string }) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M5 4H3V6H5V4ZM5 7H3V9H5V7ZM3 10H5V12H3V10ZM8 4H6V6H8V4ZM6 7H8V9H6V7ZM8 10H6V12H8V10ZM3 13H5V15H3V13ZM8 13H6V15H8V13ZM3 16H5V18H3V16ZM8 16H6V18H8V16Z"
         fill="#94A2AE"
       />
@@ -30,6 +30,7 @@ export const DBlockNodeView: React.FC<NodeViewProps> = ({
       <section
         className="flex  w-4"
         contentEditable="false"
+        suppressContentEditableWarning={true}
       >
         <div
           className="cursor-pointer opacity-0 group-hover:opacity-100"

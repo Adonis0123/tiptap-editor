@@ -157,4 +157,7 @@ export const TiptapExtensions = [
   // Document,
   // DBlock,
   // Paragraph,
+
+  /* 测试自定义paragraph */
+  // CustomParagraph
 ];
