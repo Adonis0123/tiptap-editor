@@ -21,6 +21,9 @@ export interface BubbleMenuItem {
 
 type EditorBubbleMenuProps = Omit<BubbleMenuProps, 'children'>;
 
+/* https://tiptap.dev/api/extensions/bubble-menu */
+// This extension will make a contextual menu appear near a selection of text. Use it to let users apply marks to their text selection.
+
 export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
   const items: BubbleMenuItem[] = [
     {
@@ -66,8 +69,7 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
       const isEmptyTextBlock =
         !doc.textBetween(from, to).length && isTextSelection(state.selection);
 
-     
-      return !(!view.hasFocus() || empty || isEmptyTextBlock)
+      return !(!view.hasFocus() || empty || isEmptyTextBlock);
     },
 
     tippyOptions: {
@@ -80,6 +82,12 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
       },
     },
   };
+
+  const onReplaceSelection = () => {
+    const { editor } = props;
+  };
+
+  const onInsertBelow = () => {};
 
   return (
     <BubbleMenu
@@ -117,6 +125,10 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
           />
         </button>
       ))}
+
+      <button onClick={onReplaceSelection}>replace selection</button>
+      <button onClick={onInsertBelow}>insert below</button>
+
       {/* <ColorSelector
         editor={props.editor}
         isOpen={isColorSelectorOpen}

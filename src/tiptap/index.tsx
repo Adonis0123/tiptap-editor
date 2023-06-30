@@ -80,8 +80,8 @@ const Tiptap: React.FC<ITiptapProps> = (props) => {
           <>
             <EditorTitle editor={editor} />
             <EditorBubbleMenu editor={editor} />
-            {/* 测试 */}
-            <LinkBubbleMenu editor={editor} />
+            {/* 测试link bubble */}
+            {/* <LinkBubbleMenu editor={editor} /> */}
             <EditorContent editor={editor} />
           </>
         ) : null}
