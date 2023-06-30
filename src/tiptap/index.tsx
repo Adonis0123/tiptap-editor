@@ -62,29 +62,29 @@ const Tiptap: React.FC<ITiptapProps> = (props) => {
 
   return (
     <>
-      {editor ? <EditorTools editor={editor} /> : null}
+      <EditorTools  />
       <div
         style={{
           boxShadow: '0px 4px 9px rgba(11, 45, 96, 0.16)',
         }}
         className={cls`
-      bg-white
-      w-full h-full 
-      rounded-lg
-      overflow-y-auto
-      relative
-      p-6
+        bg-white
+        w-full h-full 
+        rounded-lg
+        overflow-y-auto
+        relative
+        p-6
       `}
       >
-        {editor ? (
-          <>
-            <EditorTitle editor={editor} />
-            <EditorBubbleMenu editor={editor} />
-            {/* 测试link bubble */}
-            {/* <LinkBubbleMenu editor={editor} /> */}
-            <EditorContent editor={editor} />
-          </>
-        ) : null}
+        <>
+          {/* 标题 */}
+          <EditorTitle  />
+          {/* 划线菜单 */}
+          <EditorBubbleMenu  />
+          {/* 测试link bubble */}
+          {/* <LinkBubbleMenu  /> */}
+          <EditorContent editor={editor} />
+        </>
       </div>
     </>
   );

@@ -3,15 +3,15 @@ import React, { useMemo } from 'react';
 import { ToolItem } from '..';
 import { Editor } from '@tiptap/react';
 import { Select } from 'antd';
+import { useEditorContext } from '@/tiptap/contexts/editorContext';
 
 export interface IHeadingOptionsProps {
   className?: string;
-  editor: Editor;
 }
 
 const HeadingOptions: React.FC<IHeadingOptionsProps> = (props) => {
-  const { className, editor } = props;
-
+  const { className } = props;
+  const { editor } = useEditorContext();
   const options: ToolItem[] = [
     {
       name: 'Text',

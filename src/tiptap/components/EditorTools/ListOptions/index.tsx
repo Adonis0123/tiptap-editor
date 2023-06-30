@@ -1,5 +1,5 @@
 import cls from '@/utils/cls';
-import { Editor } from '@tiptap/react';
+import { Editor, useEditor } from '@tiptap/react';
 import React from 'react';
 import { ToolIconItem } from '..';
 import { Dropdown, type MenuProps } from 'antd';
@@ -12,14 +12,17 @@ import {
   List,
 } from 'lucide-react';
 import styles from '../index.module.scss';
+import { useEditorContext } from '@/tiptap/contexts/editorContext';
 
 export interface IListOptionsProps {
   className?: string;
-  editor: Editor;
+ 
 }
 
 const ListOptions: React.FC<IListOptionsProps> = (props) => {
-  const { className, editor } = props;
+  const { className } = props;
+
+  const {editor} = useEditorContext()
 
   const renderIcon = (Icon: typeof AlignLeftIcon) => {
     return <Icon className="w-5 h-5 cursor-pointer text-display" />;

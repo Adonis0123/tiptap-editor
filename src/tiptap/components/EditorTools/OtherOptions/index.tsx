@@ -5,14 +5,16 @@ import styles from '../index.module.scss';
 import { Link2Icon } from 'lucide-react';
 import AddLink from './AddLink';
 import AddImage from './AddImage';
+import { useEditorContext } from '@/tiptap/contexts/editorContext';
 
 export interface IOtherOptionsProps {
   className?: string;
-  editor: Editor;
 }
 
 const OtherOptions: React.FC<IOtherOptionsProps> = (props) => {
-  const { className, editor } = props;
+  const { className } = props;
+
+  const { editor } = useEditorContext();
 
   return (
     <div
@@ -21,8 +23,8 @@ const OtherOptions: React.FC<IOtherOptionsProps> = (props) => {
       ${className}
 `}
     >
-      <AddLink editor={editor}/>
-      <AddImage editor={editor}/>
+      <AddLink editor={editor} />
+      <AddImage editor={editor} />
     </div>
   );
 };

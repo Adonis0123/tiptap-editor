@@ -4,14 +4,16 @@ const { TextArea } = Input;
 
 import cls from '@/utils/cls';
 import { Editor } from '@tiptap/react';
+import { useEditorContext } from '@/tiptap/contexts/editorContext';
 
 export interface IEditorTitleProps {
   className?: string;
-  editor: Editor;
+
 }
 
 const EditorTitle: React.FC<IEditorTitleProps> = (props) => {
-  const { className, editor } = props;
+  const { className } = props;
+  const {editor} = useEditorContext()
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [title, setTitle] = useState<string>('this is title');
 

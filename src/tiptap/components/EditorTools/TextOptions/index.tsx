@@ -10,14 +10,15 @@ import {
   UnderlineIcon,
 } from 'lucide-react';
 import styles from '../index.module.scss';
+import { useEditorContext } from '@/tiptap/contexts/editorContext';
 
 export interface ITextOptionsProps {
   className?: string;
-  editor: Editor;
 }
 
 const TextOptions: React.FC<ITextOptionsProps> = (props) => {
-  const { className, editor } = props;
+  const { className } = props;
+  const { editor } = useEditorContext();
   const items: ToolIconItem[] = [
     {
       name: 'bold',
@@ -36,7 +37,7 @@ const TextOptions: React.FC<ITextOptionsProps> = (props) => {
     {
       name: 'underline',
       isActive: () => editor.isActive('underline'),
-      command: () => props.editor.chain().focus().toggleUnderline().run(),
+      command: () => editor.chain().focus().toggleUnderline().run(),
       isDisabled: () => !editor.can().chain().focus().toggleUnderline().run(),
       icon: UnderlineIcon,
     },

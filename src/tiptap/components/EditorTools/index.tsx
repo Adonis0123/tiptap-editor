@@ -10,7 +10,6 @@ import OtherOptions from './OtherOptions';
 
 export interface IEditorToolsProps {
   className?: string;
-  editor: Editor;
 }
 
 export interface ToolItem {
@@ -29,7 +28,7 @@ const Interval = () => {
 };
 
 const EditorTools: React.FC<IEditorToolsProps> = (props) => {
-  const { className, editor } = props;
+  const { className } = props;
 
   return (
     <div
@@ -39,16 +38,15 @@ const EditorTools: React.FC<IEditorToolsProps> = (props) => {
       ${className}
   `}
     >
-      <HeadingOptions editor={editor} />
+      <HeadingOptions />
       <Interval />
-      <TextOptions editor={editor} />
+      <TextOptions />
       <Interval />
-      <ListOptions editor={editor} />
+      <ListOptions />
       <Interval />
-      <OtherOptions editor={editor}/>
+      <OtherOptions />
       <Interval />
-      <OperateOptions editor={editor} />
-      
+      <OperateOptions />
     </div>
   );
 };

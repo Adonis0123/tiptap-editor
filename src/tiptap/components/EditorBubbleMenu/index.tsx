@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import cls from '@/utils/cls';
 import { NodeSelector } from '../NodeSelector';
+import { useEditorContext } from '@/tiptap/contexts/editorContext';
 
 /* https://tiptap.dev/api/extensions/bubble-menu */
 
@@ -19,37 +20,36 @@ export interface BubbleMenuItem {
   icon: typeof BoldIcon;
 }
 
-type EditorBubbleMenuProps = Omit<BubbleMenuProps, 'children'>;
+type EditorBubbleMenuProps = Omit<BubbleMenuProps, 'children' | 'editor'>;
 
 /* https://tiptap.dev/api/extensions/bubble-menu */
 // This extension will make a contextual menu appear near a selection of text. Use it to let users apply marks to their text selection.
 
 export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
-  const { editor } = props;
-
+  const { editor } = useEditorContext();
   const items: BubbleMenuItem[] = [
     {
       name: 'bold',
-      isActive: () => props.editor.isActive('bold'),
-      command: () => props.editor.chain().focus().toggleBold().run(),
+      isActive: () => editor.isActive('bold'),
+      command: () => editor.chain().focus().toggleBold().run(),
       icon: BoldIcon,
     },
     {
       name: 'italic',
-      isActive: () => props.editor.isActive('italic'),
-      command: () => props.editor.chain().focus().toggleItalic().run(),
+      isActive: () => editor.isActive('italic'),
+      command: () => editor.chain().focus().toggleItalic().run(),
       icon: ItalicIcon,
     },
     {
       name: 'underline',
-      isActive: () => props.editor.isActive('underline'),
-      command: () => props.editor.chain().focus().toggleUnderline().run(),
+      isActive: () => editor.isActive('underline'),
+      command: () => editor.chain().focus().toggleUnderline().run(),
       icon: UnderlineIcon,
     },
     {
       name: 'strike',
-      isActive: () => props.editor.isActive('strike'),
-      command: () => props.editor.chain().focus().toggleStrike().run(),
+      isActive: () => editor.isActive('strike'),
+      command: () => editor.chain().focus().toggleStrike().run(),
       icon: StrikethroughIcon,
     },
   ];
@@ -92,16 +92,17 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
   const onInsertBelow = () => {
     console.log(editor.state.selection.from, 'from');
     console.log(editor.state.selection.to, 'to');
-    editor.commands.insertContent( '插入标题', {
+    editor.commands.insertContent('插入标题', {
       parseOptions: {
         preserveWhitespace: 'full',
-      }
+      },
     });
   };
 
   return (
     <BubbleMenu
       {...bubbleMenuProps}
+      editor={editor}
       className={cls`
       overflow-hidden
       rounded
@@ -111,7 +112,7 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
       `}
     >
       <NodeSelector
-        editor={props.editor}
+        editor={editor}
         isOpen={isNodeSelectorOpen}
         setIsOpen={() => {
           setIsNodeSelectorOpen(!isNodeSelectorOpen);
@@ -140,7 +141,7 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
       <button onClick={onInsertBelow}>insert below</button>
 
       {/* <ColorSelector
-        editor={props.editor}
+        editor={editor}
         isOpen={isColorSelectorOpen}
         setIsOpen={() => {
           setIsColorSelectorOpen(!isColorSelectorOpen);

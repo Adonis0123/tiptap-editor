@@ -17,7 +17,6 @@ export default function Home() {
   if (!editor) {
     return null;
   }
-
   return (
     <main className={`h-screen p-12`}>
       <EditorProvider

@@ -4,15 +4,15 @@ import styles from '../index.module.scss';
 import { Editor } from '@tiptap/react';
 import { ToolIconItem } from '..';
 import { Redo, UndoIcon } from 'lucide-react';
+import { useEditorContext } from '@/tiptap/contexts/editorContext';
 
 export interface IOperateOptionsProps {
   className?: string;
-  editor: Editor;
 }
 
 const OperateOptions: React.FC<IOperateOptionsProps> = (props) => {
-  const { className, editor } = props;
-
+  const { className } = props;
+  const { editor } = useEditorContext();
   const items: ToolIconItem[] = [
     {
       name: 'undo',
