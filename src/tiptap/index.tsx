@@ -47,8 +47,8 @@ const Tiptap: React.FC<ITiptapProps> = (props) => {
     if (!editor) {
       return;
     }
-    const html = markdown2Html(content);
-    editor.commands.setContent(html);
+    // const html = markdown2Html(content);
+    editor.commands.setContent(content);
   }, [editor, content]);
 
   /* 插入内容 */
