@@ -67,6 +67,7 @@ const AddImage: React.FC<IAddImageProps> = (props) => {
       >
         <ImageIcon
           className={cls`
+          text-display
           h-5 w-5 
         `}
         />

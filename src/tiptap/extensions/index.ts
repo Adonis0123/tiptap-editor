@@ -69,7 +69,7 @@ export const TiptapExtensions = [
       width: 4,
     },
     /* 文本间隙光标 https://tiptap.dev/api/extensions/gapcursor */
-    gapcursor: false,
+    // gapcursor: true,
   }),
   // patch to fix horizontal rule bug: https://github.com/ueberdosis/tiptap/pull/3859#issuecomment-1536799740
   HorizontalRule.extend({
