@@ -9,6 +9,7 @@ import { markdown2Html } from './utils';
 import { EditorBubbleMenu } from './components/EditorBubbleMenu';
 import EditorTitle from './components/EditorTitle';
 import EditorTools from './components/EditorTools';
+import { LinkBubbleMenu } from './components/EditorBubbleMenu/LinkBubbleMenu';
 export interface ITiptapProps {}
 
 const Tiptap: React.FC<ITiptapProps> = (props) => {
@@ -85,6 +86,8 @@ const Tiptap: React.FC<ITiptapProps> = (props) => {
           <>
             <EditorTitle editor={editor} />
             <EditorBubbleMenu editor={editor} />
+            {/* 测试 */}
+            <LinkBubbleMenu editor={editor} />
             <EditorContent editor={editor} />
           </>
         ) : null}
