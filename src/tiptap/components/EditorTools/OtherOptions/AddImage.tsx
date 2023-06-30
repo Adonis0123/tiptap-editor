@@ -67,8 +67,7 @@ const AddImage: React.FC<IAddImageProps> = (props) => {
       >
         <ImageIcon
           className={cls`
-        h-5 w-5 
-        ${editor.isActive('link') ? 'text-primary' : 'text-display'}
+          h-5 w-5 
         `}
         />
       </button>
