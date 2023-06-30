@@ -10,19 +10,13 @@ import { EditorBubbleMenu } from './components/EditorBubbleMenu';
 import EditorTitle from './components/EditorTitle';
 import EditorTools from './components/EditorTools';
 import { LinkBubbleMenu } from './components/EditorBubbleMenu/LinkBubbleMenu';
+import { useEditorContext } from './contexts/editorContext';
 export interface ITiptapProps {}
 
 const Tiptap: React.FC<ITiptapProps> = (props) => {
   const [content, setContent] = useState<string>('');
 
-  /*  初始化editor */
-  const editor = useEditor({
-    extensions: TiptapExtensions,
-    editorProps: TiptapEditorProps,
-    content: '',
-    autofocus: 'end',
-    onUpdate: (e) => {},
-  });
+  const { editor } = useEditorContext();
 
   useMount(() => {
     // 获取浏览器参数
