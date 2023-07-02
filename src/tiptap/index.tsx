@@ -43,7 +43,9 @@ const Tiptap: React.FC<ITiptapProps> = (props) => {
       return;
     }
     // const html = markdown2Html(content);
-    editor.commands.setContent(content);
+    setTimeout(() => {
+      editor.commands.setContent(content);
+    });
   }, [editor, content]);
 
   /* 插入内容 */
@@ -62,7 +64,7 @@ const Tiptap: React.FC<ITiptapProps> = (props) => {
 
   return (
     <>
-      <EditorTools  />
+      <EditorTools />
       <div
         style={{
           boxShadow: '0px 4px 9px rgba(11, 45, 96, 0.16)',
@@ -78,9 +80,9 @@ const Tiptap: React.FC<ITiptapProps> = (props) => {
       >
         <>
           {/* 标题 */}
-          <EditorTitle  />
+          <EditorTitle />
           {/* 划线菜单 */}
-          <EditorBubbleMenu  />
+          <EditorBubbleMenu />
           {/* 测试link bubble */}
           {/* <LinkBubbleMenu  /> */}
           <EditorContent editor={editor} />

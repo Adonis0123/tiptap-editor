@@ -1,4 +1,4 @@
-import { BubbleMenu, BubbleMenuProps, isTextSelection } from '@tiptap/react';
+import {  BubbleMenuProps, isTextSelection } from '@tiptap/react';
 import { FC, useState } from 'react';
 import {
   BoldIcon,
@@ -10,6 +10,7 @@ import {
 import cls from '@/utils/cls';
 import { NodeSelector } from '../NodeSelector';
 import { useEditorContext } from '@/tiptap/contexts/editorContext';
+import { BubbleMenuView } from '@/tiptap/extensions/BubbleMenu/BubbleMenuView';
 
 /* https://tiptap.dev/api/extensions/bubble-menu */
 
@@ -92,7 +93,7 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
   const onInsertBelow = () => {
     console.log(editor.state.selection.from, 'from');
     console.log(editor.state.selection.to, 'to');
-    editor.commands.insertContent('插入标题', {
+    editor.commands.insertContent('插入文本', {
       parseOptions: {
         preserveWhitespace: 'full',
       },
@@ -100,7 +101,7 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
   };
 
   return (
-    <BubbleMenu
+    <BubbleMenuView
       {...bubbleMenuProps}
       editor={editor}
       className={cls`
@@ -148,6 +149,6 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
           setIsNodeSelectorOpen(false);
         }}
       /> */}
-    </BubbleMenu>
+    </BubbleMenuView>
   );
 };
