@@ -88,10 +88,10 @@ export class BubbleMenuView {
     this.view.dom.addEventListener('mousedown', this.viewMousedownHandler);
     this.view.dom.addEventListener('mouseup', this.viewMouseupHandler);
     this.view.dom.addEventListener('dragstart', this.dragstartHandler);
-    this.view.dom.addEventListener('dragover', (e) => {
-      e.preventDefault();
-    });
-    this.view.dom.addEventListener('drop', this.dragendHandler);
+    // this.view.dom.addEventListener('dragover', (e) => {
+    //   e.preventDefault();
+    // });
+    // this.view.dom.addEventListener('drop', this.dragendHandler);
     this.editor.on('focus', this.focusHandler);
     this.editor.on('blur', this.blurHandler);
     this.tippyOptions = tippyOptions;
@@ -120,7 +120,7 @@ export class BubbleMenuView {
   dragendHandler = () => {
     const selection = window.getSelection();
     if (selection) {
-      this.hide()
+      this.hide();
       selection.removeAllRanges();
     }
   };
@@ -131,8 +131,6 @@ export class BubbleMenuView {
   };
 
   blurHandler = ({ event }: { event: FocusEvent }) => {
-    console.log('blurHandler');
-
     if (this.preventHide) {
       this.preventHide = false;
 

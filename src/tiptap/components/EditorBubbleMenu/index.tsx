@@ -1,4 +1,4 @@
-import {  BubbleMenuProps, isTextSelection } from '@tiptap/react';
+import { BubbleMenu, BubbleMenuProps, isTextSelection } from '@tiptap/react';
 import { FC, useState } from 'react';
 import {
   BoldIcon,
@@ -10,7 +10,6 @@ import {
 import cls from '@/utils/cls';
 import { NodeSelector } from '../NodeSelector';
 import { useEditorContext } from '@/tiptap/contexts/editorContext';
-import { BubbleMenuView } from '@/tiptap/extensions/BubbleMenu/BubbleMenuView';
 
 /* https://tiptap.dev/api/extensions/bubble-menu */
 
@@ -87,21 +86,22 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
     },
   };
 
-  const onReplaceSelection = () => {};
-
-  /* https://tiptap.dev/api/commands#chain-commands */
-  const onInsertBelow = () => {
-    console.log(editor.state.selection.from, 'from');
-    console.log(editor.state.selection.to, 'to');
-    editor.commands.insertContent('插入文本', {
+  const onReplaceSelection = () => {
+    editor.commands.insertContent('替换文本', {
       parseOptions: {
         preserveWhitespace: 'full',
       },
     });
   };
 
+  /* https://tiptap.dev/api/commands#chain-commands */
+  const onInsertBelow = () => {
+    console.log(editor.state.selection.from, 'from');
+    console.log(editor.state.selection.to, 'to');
+  };
+
   return (
-    <BubbleMenuView
+    <BubbleMenu
       {...bubbleMenuProps}
       editor={editor}
       className={cls`
@@ -138,8 +138,8 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
         </button>
       ))}
 
-      <button onClick={onReplaceSelection}>replace selection</button>
-      <button onClick={onInsertBelow}>insert below</button>
+      <button onClick={onReplaceSelection}>replace</button>
+      <button onClick={onInsertBelow}>insert</button>
 
       {/* <ColorSelector
         editor={editor}
@@ -149,6 +149,6 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
           setIsNodeSelectorOpen(false);
         }}
       /> */}
-    </BubbleMenuView>
+    </BubbleMenu>
   );
 };
