@@ -7,6 +7,9 @@ import TextOptions from './TextOptions';
 import ListOptions from './ListOptions';
 import OperateOptions from './OperateOptions';
 import OtherOptions from './OtherOptions';
+import { markdown2Html, onInsertContext } from '@/tiptap/utils';
+import { useEditorContext } from '@/tiptap/contexts/editorContext';
+import { presetMarkdown } from '@/tiptap/defaultContent';
 
 export interface IEditorToolsProps {
   className?: string;
@@ -29,7 +32,7 @@ const Interval = () => {
 
 const EditorTools: React.FC<IEditorToolsProps> = (props) => {
   const { className } = props;
-
+  const { editor } = useEditorContext();
   return (
     <div
       className={cls`
@@ -47,6 +50,17 @@ const EditorTools: React.FC<IEditorToolsProps> = (props) => {
       <OtherOptions />
       <Interval />
       <OperateOptions />
+      <Interval />
+      <button
+        onClick={() => {
+          onInsertContext({
+            editor,
+            context: presetMarkdown,
+          });
+        }}
+      >
+        insert
+      </button>
     </div>
   );
 };

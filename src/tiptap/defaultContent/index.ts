@@ -18,5 +18,4 @@ export const presetMarkdown = `
 
 * 文章样式
 * 协同编辑
-
 `;

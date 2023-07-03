@@ -1,3 +1,4 @@
+import { Editor } from '@tiptap/react';
 import { marked } from 'marked';
 
 export function markdown2Html(markdown: string): string {
@@ -55,4 +56,34 @@ export function markdown2Html(markdown: string): string {
   });
 
   return marked.parse(markdown);
+}
+
+/**
+ * @description: 在编辑器中插入一段文本
+ * context 可以是html或者markdown字符串
+ */
+export function onInsertContext({
+  editor,
+  context,
+}: {
+  editor: Editor;
+  context: string;
+}) {
+  editor.commands.enter();
+  editor.commands.liftEmptyBlock();
+  const html = markdown2Html(context);
+  /**
+   * 去除所有换行符
+   * https://github.com/ueberdosis/tiptap/issues/4034
+   */
+  const htmlWithoutNewLine = html.replace(/\n/g, '');
+  editor
+    .chain()
+    .insertContent(htmlWithoutNewLine, {
+      parseOptions: {
+        preserveWhitespace: false,
+      },
+    })
+    .focus()
+    .run();
 }

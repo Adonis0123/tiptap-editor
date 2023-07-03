@@ -10,6 +10,7 @@ import {
 import cls from '@/utils/cls';
 import { NodeSelector } from '../NodeSelector';
 import { useEditorContext } from '@/tiptap/contexts/editorContext';
+import { presetMarkdown } from '@/tiptap/defaultContent';
 
 /* https://tiptap.dev/api/extensions/bubble-menu */
 
@@ -87,9 +88,9 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
   };
 
   const onReplaceSelection = () => {
-    editor.commands.insertContent('替换文本', {
+    editor.commands.insertContent(presetMarkdown, {
       parseOptions: {
-        preserveWhitespace: 'full',
+        preserveWhitespace: false,
       },
     });
   };
