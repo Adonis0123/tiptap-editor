@@ -40,7 +40,7 @@ const Command = Extension.create({
   addOptions() {
     return {
       suggestion: {
-        char: '/', // 启用的字符
+        char: '//', // 启用的字符
         command: ({
           editor,
           range,
