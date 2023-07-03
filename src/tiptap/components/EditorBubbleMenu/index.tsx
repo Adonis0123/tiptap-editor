@@ -96,8 +96,10 @@ export const EditorBubbleMenu: FC<EditorBubbleMenuProps> = (props) => {
 
   /* https://tiptap.dev/api/commands#chain-commands */
   const onInsertBelow = () => {
-    console.log(editor.state.selection.from, 'from');
-    console.log(editor.state.selection.to, 'to');
+    editor.commands.insertContentAt(
+      editor.state.selection.to,
+      '插入文本'
+    );
   };
 
   return (
