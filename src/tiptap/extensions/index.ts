@@ -70,8 +70,8 @@ export const TiptapExtensions = [
     },
     /* 文本间隙光标 https://tiptap.dev/api/extensions/gapcursor */
     // gapcursor: true,
-    paragraph:false,
-    document:false,
+    // paragraph:false,
+    // document:false,
   }),
   // patch to fix horizontal rule bug: https://github.com/ueberdosis/tiptap/pull/3859#issuecomment-1536799740
   HorizontalRule.extend({
@@ -156,9 +156,9 @@ export const TiptapExtensions = [
   }),
 
   /* 以下是测试自定义block */
-  Document,
-  DBlock,
-  Paragraph,
+  // Document,
+  // DBlock,
+  // Paragraph,
 
   /* 测试自定义paragraph */
   // CustomParagraph
